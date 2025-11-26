@@ -30,3 +30,20 @@ app.get("/recipes", async (req, res) => {
         res.send("Algo ha ido mal");
     }
 });
+
+// COGER UNA RECETA ESPECÍFICA
+app.get("/recipe/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const query = "SELECT * FROM recipes WHERE id = ?"
+
+        const connection = await mysql.getConnection();
+        const data = await connection.query(query, [id]);
+
+        res.json(data[0]);
+    } catch {
+        res.send("Algo ha ido mal");
+    }
+
+});
