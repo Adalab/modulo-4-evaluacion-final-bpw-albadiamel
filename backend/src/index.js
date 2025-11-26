@@ -45,5 +45,20 @@ app.get("/recipe/:id", async (req, res) => {
     } catch {
         res.send("Algo ha ido mal");
     }
+});
 
+// CREAR UNA RECETA
+app.post("/recipe", async (req, res) => {
+    try {
+        const { name, ingredients, instructions } = req.body;
+
+        const query = "INSERT INTO recipes (name, ingredients, instructions) VALUES ( ?, ?, ?)";
+
+        const connection = await mysql.getConnection();
+        await connection.query(query, [name, ingredients, instructions]);
+
+        res.status(201).send("Receta creada");
+    } catch {
+        res.send("Algo ha ido mal");
+    }
 });
