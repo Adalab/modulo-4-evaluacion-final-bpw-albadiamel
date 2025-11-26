@@ -17,9 +17,11 @@ app.listen(port, () => {
 });
 
 // Endpoints
-app.get("/products", async (req, res) => {
+
+// COGER TODAS LAS RECETAS
+app.get("/recipes", async (req, res) => {
     try {
-        const query = "SELECT * FROM products";
+        const query = "SELECT * FROM recipes WHERE deleted_at IS NULL";
 
         const connection = await mysql.getConnection();
         const data = await connection.query(query);
