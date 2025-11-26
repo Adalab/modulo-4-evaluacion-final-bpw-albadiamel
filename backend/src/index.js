@@ -17,7 +17,6 @@ app.listen(port, () => {
 });
 
 // Endpoints
-
 // COGER TODAS LAS RECETAS
 app.get("/recipes", async (req, res) => {
     try {
@@ -60,5 +59,21 @@ app.post("/recipe", async (req, res) => {
         res.status(201).send("Receta creada");
     } catch {
         res.send("Algo ha ido mal");
+    }
+});
+
+// ACTUALIZAR UNA RECETA ESPECÍFICA
+app.put("/recipe/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, ingredients, instructions } = req.body;
+
+        const query = "UPDATE recipes SET name = ?, ingredients = ?, instructions = ? WHERE id = ?";
+
+        const connection = await mysql.getConnection();
+        await connection.query(query, [name, ingredients, instructions, id]);
+        res.send("Receta actualizada");
+    } catch {
+       res.send("Algo ha ido mal"); 
     }
 });
