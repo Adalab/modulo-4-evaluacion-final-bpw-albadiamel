@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "4e6ed5d3-50f2-4d68-88bb-de60e2c2a777",
+		"name": "RecipesApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50055913",
+		"_collection_link": "https://albadiazgraficaimpresa-3369849.postman.co/workspace/Alba-D%C3%ADaz's-Workspace~66f03318-57d4-4a83-8638-244597aa8f88/collection/50055913-4e6ed5d3-50f2-4d68-88bb-de60e2c2a777?action=share&source=collection_link&creator=50055913"
+	},
+	"item": [
+		{
+			"name": "POST /recipe",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ingredients\": \"Batatas cocidas, Azúcar, Canela\",\n  \"instructions\": \"Cocer las batatas, triturar y mezclar con los ingredientes.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/recipe",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /recipes",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/recipes",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /recipe/:id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/recipe/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recipe",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /recipe/:id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Mousse de gofio (versión actualizada)\",\n  \"ingredients\": \"Gofio, Nata para montar, Leche, Azúcar, Miel, Almendras molidas, Vainilla\",\n  \"instructions\": \"Mezclar gofio con leche, miel y vainilla. Montar la nata con azúcar. Integrar con movimientos envolventes. Refrigerar 3 horas antes de servir.\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/recipe/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recipe",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /recipe/:id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/recipe/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"recipe",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
