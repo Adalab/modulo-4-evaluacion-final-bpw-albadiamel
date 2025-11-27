@@ -35,6 +35,11 @@ app.get("/recipe/:id", async (req, res) => {
     try {
         const { id } = req.params;
 
+        // VALIDACIÓN DE LOS DATOS
+        if (!id || isNaN(id)) {
+            return res.status(400).send("ID inválido");
+        }
+
         const query = "SELECT * FROM recipes WHERE id = ?"
 
         const connection = await mysql.getConnection();
@@ -50,6 +55,10 @@ app.get("/recipe/:id", async (req, res) => {
 app.post("/recipe", async (req, res) => {
     try {
         const { name, ingredients, instructions } = req.body;
+
+        if (!name || !ingredients || !instructions) {
+            return res.status(400).send("Faltan campos obligatorios");
+        }
 
         const query = "INSERT INTO recipes (name, ingredients, instructions) VALUES ( ?, ?, ?)";
 
@@ -68,6 +77,10 @@ app.put("/recipe/:id", async (req, res) => {
         const { id } = req.params;
         const { name, ingredients, instructions } = req.body;
 
+        if (!id || isNaN(id)) {
+            return res.status(400).send("ID inválido");
+        }
+
         const query = "UPDATE recipes SET name = ?, ingredients = ?, instructions = ? WHERE id = ?";
 
         const connection = await mysql.getConnection();
@@ -83,6 +96,10 @@ app.patch("/recipe/:id", async (req, res) => {
     try {
         const { id } = req.params;
 
+        if (!id || isNaN(id)) {
+            return res.status(400).send("ID inválido");
+        }
+
         const query = "UPDATE recipes SET deleted_at = NOW() WHERE id = ?";
         const connection = await mysql.getConnection();
         await connection.query(query, [id]);
@@ -91,4 +108,4 @@ app.patch("/recipe/:id", async (req, res) => {
     } catch {
         res.send("Algo ha ido mal"); 
     }
-})
+});
